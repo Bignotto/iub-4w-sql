@@ -1,15 +1,14 @@
 with date_series as (
     select generate_series(
-        '2025-06-27'::date,
-        '2025-06-30'::date,
+        '2025-06-10'::date,
+        '2025-06-11'::date,
         '1 day'::interval
     )::date as date
 )
 select
     d.date as serie_date,
-    coalesce(sum(R0.qtde_reportada), 0) as qtde_reportada
-    --R0.produto,
-    --R0.qtde_reportada
+    coalesce(R0.produto, '---') as produto,
+    coalesce(R0.qtde_reportada, 0) as qtde_reportada
 from date_series d
     left join (
         select
@@ -21,5 +20,4 @@ from date_series d
             inner join public.produto P on P.produto = R1.ordem_produto_codigo_fk
                 and P.grupo = 1
     ) R0 on R0.data_reporte = d.date
-group by d.date
 order by d.date;
