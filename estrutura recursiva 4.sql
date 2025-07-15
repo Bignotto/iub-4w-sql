@@ -7,10 +7,15 @@ DECLARE
         SELECT DISTINCT produto
         FROM public.produto p
         WHERE p.produto IN (
-            -- Your product selection criteria here
-            -- This is a placeholder - replace with your actual product selection logic
-            '015.080104051112','020.080106051228','013.080103060010','004.080002020411','013.080105010010'
-            -- Replace with your actual product selection query
+select 
+    distinct p.pedidovenda_produto_codigo_fk as produto_codigo
+
+from public.pw_pedido_venda p
+    inner join public.produto pr on pr.produto = p.pedidovenda_produto_codigo_fk
+    
+where p.pedidovenda_status <> 'Atendido Total'
+    AND pr.grupo = 1
+
         );
         
 BEGIN
@@ -103,17 +108,18 @@ END $$;
 -- Query the results
 SELECT 
     tbr.*,
-    -- Add any additional joins you need here similar to your original query
     p_root.pronome as root_product_name,
-    -- You can add more fields as needed
     CASE 
-        WHEN tbr.level = 1 THEN 'DIRECT_COMPONENT'
+        WHEN p_child.proorigem = 'C' THEN 'DIRECT_COMPONENT'
         ELSE 'SUB_COMPONENT'
     END as component_type
 FROM temp_bom_results tbr
     LEFT JOIN public.produto p_root ON p_root.produto = tbr.root_product
+    left join public.produto p_child on p_child.produto = tbr.component_code
 ORDER BY 
-    tbr.root_product
+   tbr.root_product
     --,tbr.level
-    --,tbr.component_code;
+    --,tbr.component_code
 ;
+
+--select * from public.produto where produto = '015.080104051112'
