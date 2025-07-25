@@ -39,4 +39,4 @@ from public.produto P
         and ALC.amctipacab = '06'
 
 where P.grupo = 1
-    and length(P.produto)>=4
+    and length(P.produto)>=16

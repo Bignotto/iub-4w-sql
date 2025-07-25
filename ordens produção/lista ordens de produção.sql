@@ -13,7 +13,7 @@ select
     op.ordem_data_emissao as data_emissao,
     op.ordem_data_previsao as data_previsao,
     op.ordem_data_encerramento as data_encerramento,
-    op.ordem_qtde_digitada as quantidade
+    op.ordem_qtde_digitada as quantidade_produzir
 
 from pw_ordem op
     inner join produto p on p.produto = op.ordem_produto_codigo_fk
@@ -21,7 +21,7 @@ from pw_ordem op
     inner join grupo1 s on s.subgrupo = p.subgrupo
         and s.grupo = p.grupo
 
-where op.ordem_data_previsao = '2025-07-21'
+where op.ordem_status <> 'Encerr'
+    and p.grupo = 1
 
 order by op.ordem_data_previsao desc
-limit 100;

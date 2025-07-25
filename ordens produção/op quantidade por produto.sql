@@ -6,8 +6,11 @@ from pw_ordem op
     inner join grupo g on g.grupo = p.grupo
     inner join grupo1 s on s.subgrupo = p.subgrupo
         and s.grupo = p.grupo
-where op.ordem_data_previsao = '2025-07-21'
+where op.ordem_status <> 'Encerr'
+    and p.grupo = 1
 group by op.ordem_produto_codigo_fk
+
+-- Encerr
 
 
 select
