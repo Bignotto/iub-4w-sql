@@ -11,6 +11,7 @@ select
     P.prosldmax AS estoque_maximo,
     P.prolotmax AS lote_maximo,
     P.proloteco AS lote_economico,
+    P.prolotmul as lote_multiplo,
     P.unimedida AS unidade_medida
 from public.produto P 
     inner join public.grupo G on G.grupo = P.grupo
