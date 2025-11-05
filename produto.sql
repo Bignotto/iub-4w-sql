@@ -1,0 +1,1 @@
+select * from produto p where p.grupo in (2,3);

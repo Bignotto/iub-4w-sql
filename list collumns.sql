@@ -29,4 +29,4 @@ JOIN
     pg_class v ON c.table_name = v.relname
 WHERE
     c.table_schema = 'public'
-    AND c.table_name = 'pw_dia';
+    AND c.table_name = 'lotecar';
