@@ -10,7 +10,7 @@
                 CAST(ROW_NUMBER() OVER (ORDER BY estfilho) AS TEXT) as sort_path,
                 estproduto as root_product
             FROM public.estrutur 
-            WHERE estproduto = '015.080104051112'
+            WHERE estproduto = '0020013'
             
             UNION ALL
             

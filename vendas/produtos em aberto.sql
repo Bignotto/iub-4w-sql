@@ -7,6 +7,7 @@ from public.pw_pedido_venda T0
 where T0.pedidovenda_status <> 'Atendido Total'
     AND P.grupo = 1 -- grupo 1 = urnas
     AND T0.pedidovenda_qtde_saldo_produto > 0
+    AND T0.pedidovenda_situacao = 'Aprovado'
 group by T0.pedidovenda_produto_codigo_fk
 order by 2 desc;
 

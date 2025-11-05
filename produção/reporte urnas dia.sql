@@ -1,7 +1,7 @@
 with date_series as (
     select generate_series(
-        '2025-05-01'::date,
-        '2025-05-31'::date,
+        '2025-10-01'::date,
+        '2025-10-31'::date,
         '1 day'::interval
     )::date as date
 )
@@ -20,7 +20,7 @@ from date_series d
             inner join public.pw_ordem R1 on R1.ordem_codigo_pk = R0.ordemreporte_ordem_codigo_fk
             inner join public.produto P on P.produto = R1.ordem_produto_codigo_fk
                 and P.grupo = 1
-                and P.produto = '004.080000010210'
+                --and P.produto = '004.080000010210'
     ) R0 on R0.data_reporte = d.date
 group by d.date
 order by d.date;
