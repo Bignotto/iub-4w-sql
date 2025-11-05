@@ -3,6 +3,8 @@ select
     FAT.faturamento_nf_numero,
     FAT.faturamento_data_faturamento,
     FAT.faturamento_empresa_codigo_fk,
+    E.empresa_cnpj_cpf,
+    E.empresa_descricao,
     FAT.faturamento_produto_codigo_fk,
     FAT.faturamento_qtde_produto,
     FAT.faturamento_valor_total,
@@ -20,6 +22,7 @@ from public.pw_faturamento FAT
     inner join public.produto P on P.produto = FAT.faturamento_produto_codigo_fk
     inner join public.grupo G on G.grupo = P.grupo
     inner join public.grupo1 S on S.subgrupo = P.subgrupo and S.grupo = P.grupo
+    inner join public.pw_empresa E on E.empresa_codigo_pk = FAT.faturamento_empresa_codigo_fk
 where FAT.faturamento_data_faturamento >= '2025-10-01'
   and FAT.faturamento_data_faturamento <= '2025-10-31'
 
@@ -27,4 +30,6 @@ where FAT.faturamento_data_faturamento >= '2025-10-01'
 --   and FAT.faturamento_produto_codigo_fk in (
 --     select produto from public.produto where grupo = 1
 --   );
-
+-- select * from public.pw_empresa E0
+-- where E0.empresa_tipo_empresa = 'Fornecedor'
+-- limit 100;
