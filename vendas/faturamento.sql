@@ -1,7 +1,7 @@
 with date_series as (
     select generate_series(
-        '2025-10-01'::date,
-        '2025-10-31'::date,
+        '2025-11-28'::date,
+        '2025-11-28'::date,
         '1 day'::interval
     )::date as date
 )

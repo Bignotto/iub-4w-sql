@@ -20,8 +20,8 @@ from public.pw_faturamento FAT
     inner join public.produto P on P.produto = FAT.faturamento_produto_codigo_fk
     inner join public.grupo G on G.grupo = P.grupo
     inner join public.grupo1 S on S.subgrupo = P.subgrupo and S.grupo = P.grupo
-where FAT.faturamento_data_faturamento >= '2025-10-01'
-  and FAT.faturamento_data_faturamento <= '2025-10-31'
+where FAT.faturamento_data_faturamento >= '2025-11-01'
+  and FAT.faturamento_data_faturamento <= '2025-11-30'
 
 
 --   and FAT.faturamento_produto_codigo_fk in (
