@@ -1,4 +1,5 @@
 select
+    e.empresa as codigo,
     e.empnome as nome,
     e.emprazsoc as razao_social,
     e.empfanta as fantasia,
@@ -22,7 +23,7 @@ from public.empresa E
 where E.empresa in (
     select distinct F.faturamento_empresa_codigo_fk
     from public.pw_faturamento F
-    where F.faturamento_data_faturamento between '2025-08-01' and '2025-12-31'
+    where F.faturamento_data_faturamento between '2024-01-01' and '2026-12-31'
   )
   and E.empdpess = 'Jurídica'
   and E.empdemptip = 'Cliente'

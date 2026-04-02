@@ -4,7 +4,19 @@ select
     -- concatenar descrição + código em uma única coluna (garante cast se código for numérico)
     CONCAT(TV.tabelavenda_codigo_pk, ' ', CAST(TV.tabelavenda_descricao AS VARCHAR(50))) AS tabela_completa,
     TP.produto as produto,
-    TP.prvenda as preco
+    SUBSTRING(P.pronome, 1, 6) as produto_descricao,
+    CONCAT(TP.produto, ' ', SUBSTRING(P.pronome, 1, 6)) AS produto_completo,
+    CONCAT(SUBSTRING(P.pronome, 1, 6), ' ', TP.produto) AS produto_completo_descricao,
+    COALESCE(
+        replace(
+            replace(
+                replace(
+                    to_char(TP.prvenda::numeric, 'FM999,999,999,990.00'),
+                '.', '_DOT_'),
+            ',', '.'),
+        '_DOT_', ','),
+        '0,00'
+    ) AS preco
     
 from tabprven TP
 

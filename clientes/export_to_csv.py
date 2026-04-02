@@ -1,8 +1,8 @@
 import json
 import csv
 
-json_path = r"c:\Users\bigno\Projects\iub-4w-sql\clientes\export clientes.json"
-csv_path = r"c:\Users\bigno\Projects\iub-4w-sql\clientes\export clientes.csv"
+json_path = r"c:\Users\Thiago\Projects\iub-4w-sql\clientes\export clientes.json"
+csv_path = r"c:\Users\Thiago\Projects\iub-4w-sql\clientes\export clientes.csv"
 
 with open(json_path, 'r', encoding='utf-8') as f:
     data = json.load(f)
