@@ -31,5 +31,5 @@ from public.pw_compra NE
     inner join grupo G on G.grupo = P.grupo
     inner join grupo1 S on S.subgrupo = P.subgrupo
         and S.grupo = P.grupo
-where NE.compra_data_entrada >= '2025-11-01'
-  and NE.compra_data_entrada <= '2025-11-30'
+where NE.compra_data_entrada >= '2025-01-01'
+  and NE.compra_data_entrada <= '2026-04-30'
