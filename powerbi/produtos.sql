@@ -1,7 +1,5 @@
 select
-    SUBSTRING(P.pronome,1,6) AS curto_codigo,
-    P.produto AS produto_codigo,
-    P.pronome as produto_nome
+    P.produto AS produto_codigo
 
 from public.produto P 
     inner join public.grupo G on G.grupo = P.grupo
