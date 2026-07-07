@@ -15,13 +15,24 @@ select
     P.grupo,
     G.grunome as grupo_nome,
     P.subgrupo,
-    S.subnome as subgrupo_nome
+    S.subnome as subgrupo_nome,
+    E.empresa,
+    E.empnome as empresa_nome,
+    C.cidnome as cidade_nome,
+    C.estado as cidade_estado,
+    C.cidibge as cidade_ibge
 from public.pw_faturamento FAT
     inner join public.produto P on P.produto = FAT.faturamento_produto_codigo_fk
     inner join public.grupo G on G.grupo = P.grupo
     inner join public.grupo1 S on S.subgrupo = P.subgrupo and S.grupo = P.grupo
-where FAT.faturamento_data_faturamento >= '2025-11-01'
-  and FAT.faturamento_data_faturamento <= '2025-11-30'
+
+    left join public.empresa E on E.empresa = FAT.faturamento_empresa_codigo_fk
+    left join public.cidade C on C.cidade = E.empcidade
+where FAT.faturamento_data_faturamento >= %s
+  and FAT.faturamento_data_faturamento <= %s
+
+
+
 
 
 --   and FAT.faturamento_produto_codigo_fk in (

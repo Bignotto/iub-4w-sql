@@ -10,9 +10,6 @@ where c.compra_data_emissao --últimos 6 meses
     between (current_date - interval '12 months') and current_date
     and p.grupo not in (1,2,3)
     and c.compra_qtde_produto > 0
-    and c.compra_produto_codigo_fk = '2130008'
-    --and c.compra_nf_controle_pk = 30077
-   --and c.compra_nf_numero = '34948'
 
 group by c.compra_produto_codigo_fk
 

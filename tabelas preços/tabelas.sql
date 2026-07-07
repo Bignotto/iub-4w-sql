@@ -31,3 +31,4 @@ where P.grupo = 1
         TV.tabelavenda_descricao = 'LP 2024 MG/GO/RJ V A' OR
         TV.tabelavenda_descricao = 'LP 2024 SP A VISTA'
     )
+
