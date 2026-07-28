@@ -21,7 +21,9 @@ select
     S.subnome AS produto_subgrupo_nome,
     ROUND(NE.compra_qtde_produto::numeric, 4) as qtde_entrada,
     ROUND(NE.compra_valor_total::numeric, 2) as valor_total,
-    ROUND((NE.compra_valor_total::numeric / NULLIF(NE.compra_qtde_produto, 0)), 2) as valor_unitario
+    ROUND((NE.compra_valor_total::numeric / NULLIF(NE.compra_qtde_produto, 0)), 2) as valor_unitario,
+    NE.compra_cfop_codigo_fk as cfop_codigo,
+    CFOP.cfop_descricao as cfop_descricao
 
 from public.pw_compra NE
     inner join empresa E on E.empresa = NE.compra_empresa_codigo_fk
@@ -31,5 +33,13 @@ from public.pw_compra NE
     inner join grupo G on G.grupo = P.grupo
     inner join grupo1 S on S.subgrupo = P.subgrupo
         and S.grupo = P.grupo
-where NE.compra_data_entrada >= '2025-01-01'
+
+    left join pw_cfop CFOP on CFOP.cfop_codigo_pk = NE.compra_cfop_codigo_fk
+
+where E.empnome not like '%EBAZAR%'
+    and G.grupo not in (1,999)
+    and NE.compra_cfop_codigo_fk not in ('2.201','1.925','1.920','1.916', '1.201')
+    and NE.compra_data_entrada >= '2026-04-01'
   and NE.compra_data_entrada <= '2026-04-30'
+
+--select * from pw_cfop limit 500

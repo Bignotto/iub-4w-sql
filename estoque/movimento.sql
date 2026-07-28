@@ -40,6 +40,7 @@ where  p.prideposit not in (99) --mercado livre
     and p.priquanti > 0
     and p0.grupo not in (999,2)
     and p.pridata >= current_date - interval '6 months'
+    and p0.produto = '2150060'
 
 order by p.pridata asc
 

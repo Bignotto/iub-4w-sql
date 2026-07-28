@@ -7,6 +7,3 @@ from public.pw_faturamento FAT
 
 where FAT.faturamento_data_faturamento >= '2025-01-01'
   and P.grupo = 1
-
-
-  

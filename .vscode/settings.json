@@ -1,4 +1,5 @@
 {
+    "python.analysis.typeCheckingMode": "basic",
     "workbench.colorCustomizations": {
         "[Vira*]": {
             "toolbar.activeBackground": "#80CBC426",
