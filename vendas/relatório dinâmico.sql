@@ -20,7 +20,6 @@ select
     FAT.faturamento_tabela_venda_codigo_fk::text,
     TV.tabelavenda_descricao as tabela_venda_descricao,
     FAT.faturamento_cfop_codigo_fk,
-    V.tabelavenda_descricao,
     P.produto,
     P.pronome as produto_nome,
     P.grupo,
@@ -43,11 +42,12 @@ from public.pw_faturamento FAT
     inner join public.grupo G on G.grupo = P.grupo
     inner join public.grupo1 S on S.subgrupo = P.subgrupo and S.grupo = P.grupo
     inner join public.pw_empresa E on E.empresa_codigo_pk = FAT.faturamento_empresa_codigo_fk
-    inner join public.pw_tabela_venda V on V.tabelavenda_codigo_pk = FAT.faturamento_tabela_venda_codigo_fk
     left join public.cidade C on c.cidade = E.empresa_cidade_codigo_fk
     left join public.pw_tabela_venda TV on TV.tabelavenda_codigo_pk = FAT.faturamento_tabela_venda_codigo_fk
-where FAT.faturamento_data_faturamento >= '2025-06-01'
-  and FAT.faturamento_data_faturamento <= '2026-05-31'
+
+where FAT.faturamento_data_faturamento >= '2025-01-01'
+  and FAT.faturamento_data_faturamento <= '2030-12-31'
+  and G.grupo = 1
 
   --select * from public.pw_tabela_venda where tabelavenda_codigo_pk = '001';
 
