@@ -40,8 +40,8 @@ from public.pw_faturamento FAT
     inner join public.pw_empresa E on E.empresa_codigo_pk = FAT.faturamento_empresa_codigo_fk
     inner join public.cidade C on C.cidade = E.empresa_cidade_codigo_fk
     left join public.pw_tabela_venda TV on TV.tabelavenda_codigo_pk = FAT.faturamento_tabela_venda_codigo_fk
-where FAT.faturamento_data_faturamento >= '2025-06-01'
-  and FAT.faturamento_data_faturamento <= '2026-05-31'
+where FAT.faturamento_data_faturamento >= '2025-07-01'
+  and FAT.faturamento_data_faturamento <= '2026-06-30'
   and P.grupo = 1
 
 
