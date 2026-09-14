@@ -1,3 +1,9 @@
+/*
+Entradas => transação < 10
+Saídas => transação > 10
+Não tem transação 10
+*/
+
 select 
     p.priproduto as insumo_codigo,
     P0.pronome as insumo_nome,
@@ -39,18 +45,11 @@ from toqmovi p
 where  p.prideposit not in (99) --mercado livre
     and p.priquanti > 0
     and p0.grupo not in (999,2)
-    and p.pridata >= current_date - interval '6 months'
-    and p0.produto = '2150060'
+    --and p.pridata >= current_date - interval '6 months'
+    and p0.produto = '2130003'
 
 order by p.pridata asc
 
 --limit 100
 
 --select * from transa order by 1 asc
-
-/*
-Entradas => transação < 10
-Saídas => transação > 10
-Não tem transação 10
-
-*/

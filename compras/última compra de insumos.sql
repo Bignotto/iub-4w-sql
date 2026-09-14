@@ -44,7 +44,7 @@ from pw_compra C
     ) as ultimas_compras on ultimas_compras.ultima_data_emissao = C.compra_data_emissao
     and ultimas_compras.insumo_codigo = C.compra_produto_codigo_fk
 
-where c.compra_produto_codigo_fk = '2130015'
+--where c.compra_produto_codigo_fk = '2130015'
 
 
     --select * from pw_compra limit 5;

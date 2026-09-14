@@ -12,7 +12,7 @@ WITH RECURSIVE componentes AS (
     WHERE e.estproduto IN (
         SELECT P.produto
         FROM public.produto P 
-        WHERE P.grupo = 1 AND LENGTH(P.produto) >= 16
+        WHERE P.grupo = 2 -- AND LENGTH(P.produto) >= 16
     )
 
     UNION ALL
